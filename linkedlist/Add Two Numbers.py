@@ -51,3 +51,21 @@ def add_two_number(l1,l2):
         l2 = l2.next if l2 else None
 
     return dummy.next
+
+
+
+#
+ll1 = ListNode(2)
+ll1.next = ListNode(4)
+ll1.next.next = ListNode(3)
+
+ll2 = ListNode(5)
+ll2.next = ListNode(6)
+ll2.next.next = ListNode(4)
+result = add_two_number(ll1, ll2)
+print(result)
+
+current_node = result
+while current_node:
+    print(current_node.val)
+    current_node = current_node.next
