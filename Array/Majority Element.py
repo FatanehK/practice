@@ -16,7 +16,7 @@ Output: 2
 # Boyer-Moore Voting Algorithm
 def majorityElement(nums):
     count =0
-    candidate = None
+    candidate = 0
 
     for num in nums:
         if count == 0:
