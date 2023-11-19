@@ -61,5 +61,8 @@ root.left.left = TreeNode(1)
 root.left.right = TreeNode(2)
 root.right = TreeNode(5)
 
+
+p = root.left
+q = root.left.left
 sol = Solution()
-print(sol.rightSideView(root))
+print(sol.rightSideView())
