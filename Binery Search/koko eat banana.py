@@ -32,7 +32,7 @@ def koko_eat_banana(piles,h):
     low = 1
     high = max(piles)
     result = high
-    while low < high:
+    while low <= high:
         
         k = low + (high-low)//2
         hours = 0

@@ -1,4 +1,4 @@
-'''You have a graph of n nodes. 
+"""You have a graph of n nodes. 
 You are given an integer n and an array edges where edges[i] = [ai, bi] 
 indicates that there is an edge between ai and bi in the graph.
 
@@ -24,10 +24,11 @@ Constraints:
 edges[i].length == 2
 0 <= ai <= bi < n
 ai != bi
-There are no repeated edges.'''
+There are no repeated edges."""
 
 from collections import deque
 from collections import defaultdict
+
 
 def countComponents(n, edges):
     """
@@ -39,27 +40,23 @@ def countComponents(n, edges):
     for src, des in edges:
         graph[src].append(des)
         graph[des].append(src)
-    count=0
-    visited= [0]* n
+    count = 0
+    visited = [0] * n
     queue = deque()
     while not all(visited):
-        for i in range(n):
-            if visited[i] ==0:
+        for i in range(len(visited)):
+            if visited[i] == 0:
                 queue.append(i)
                 break
-                
+
         while queue:
             curr = queue.popleft()
             for neighbor in graph[curr]:
-                if visited[neighbor] == 0 and  neighbor not in queue:
+                if visited[neighbor] == 0 and neighbor not in queue:
                     queue.append(neighbor)
             visited[curr] = 1
-        count+=1
+        count += 1
     return count
-
-
-
-
 
 
 #     graph = defaultdict(list)
@@ -82,4 +79,4 @@ def countComponents(n, edges):
 #             visited[curr] = 1
 #         connected += 1
 #     return connected
-print(countComponents(4,[[2,3],[1,2],[1,3]]))
+print(countComponents(4, [[2, 3], [1, 2], [1, 3]]))

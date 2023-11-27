@@ -32,6 +32,4 @@ def findKthLargest(nums, k):
         heapq.heappop(heap_max)
         k -= 1
     return -heap_max[0]
-
-
 print(findKthLargest([3, 2, 3, 1, 2, 4, 5,5, 6], 4))

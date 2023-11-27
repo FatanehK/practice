@@ -1,7 +1,6 @@
-"""Given an array of intervals intervals where intervals[i] = [starti, endi], return the minimum number of intervals you need to remove to make the rest of the intervals non-overlapping.
-
- 
-
+"""Given an array of intervals intervals where intervals[i] = [starti, endi], 
+return the minimum number of intervals you need to remove to make the rest of the intervals 
+non-overlapping.
 Example 1:
 
 Input: intervals = [[1,2],[2,3],[3,4],[1,3]]
@@ -17,8 +16,6 @@ Example 3:
 Input: intervals = [[1,2],[2,3]]
 Output: 0
 Explanation: You don't need to remove any of the intervals since they're already non-overlapping.
- 
-
 Constraints:
 
 1 <= intervals.length <= 105
@@ -35,10 +32,12 @@ class Solution:
             start = intervals[i][0]
             end = intervals[i][1]
             if start >= prev_end:
+                # update end
                 prev_end = end
 
             else:
                 count += 1
+                # keep one with minimum end
                 prev_end = min(end, prev_end)
 
         return count

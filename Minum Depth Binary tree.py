@@ -30,17 +30,17 @@ class TreeNode:
         self.right = None
         self.left = None
 
-# def min_tree(root):
-#     if root is None:
-#         return 0
+def min_tree(root):
+    if root is None:
+        return 0
 
-    # left_depth = min_tree(root.left)
-    # right_depth = min_tree(root.right)
+    left_depth = min_tree(root.left)
+    right_depth = min_tree(root.right)
 
-    # if root.left is None or root.right is None:
-    #     return max(left_depth, right_depth) + 1
+    if root.left is None or root.right is None:
+        return max(left_depth, right_depth) + 1
 
-    # return min(left_depth, right_depth) + 1
+    return min(left_depth, right_depth) + 1
     # queue= deque([{"node":root,"level":1}])
     # while queue:
     #     curr = queue.popleft()

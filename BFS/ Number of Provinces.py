@@ -1,4 +1,4 @@
-'''There are n cities. Some of them are connected, while some are not. If city a is connected directly with city b, and city b is connected directly with city c, then city a is connected indirectly with city c.
+"""There are n cities. Some of them are connected, while some are not. If city a is connected directly with city b, and city b is connected directly with city c, then city a is connected indirectly with city c.
 
 A province is a group of directly or indirectly connected cities and no other cities outside of the group.
 
@@ -27,15 +27,15 @@ n == isConnected.length
 n == isConnected[i].length
 isConnected[i][j] is 1 or 0.
 isConnected[i][i] == 1
-isConnected[i][j] == isConnected[j][i]'''
+isConnected[i][j] == isConnected[j][i]"""
 from collections import deque
+
+
 def num_province(isConnected):
-
-
-    n= len(isConnected)
-    connect =0
-    visited=[0]* n
-    queue =deque([])
+    n = len(isConnected)
+    connect = 0
+    visited = [0] * n
+    queue = deque([])
     while not all(visited):
         for i in range(n):
             if not visited[i]:
@@ -45,12 +45,27 @@ def num_province(isConnected):
             curr = queue.popleft()
             if not visited[curr]:
                 for j in range(n):
-                    if isConnected[curr][j]== 1 and curr!=j:
+                    if isConnected[curr][j] == 1 and curr != j:
                         queue.append(j)
-                visited[curr]= 1
+                visited[curr] = 1
 
-        connect+=1
+        connect += 1
     return connect
 
 
-print(num_province([[1,1,0],[1,1,0],[0,0,1]]))
+print(num_province([[1, 1, 0], [1, 1, 0], [0, 0, 1]]))
+
+
+def getSumAbsoluteDifferences(nums):
+    total = sum(nums)
+    n = len(nums)
+    preSum = 0
+    result = []
+    for i, num in enumerate(nums):
+        preSum += num
+        ans = (i + 1) * num - preSum + (total - preSum) - (n - i - 1) * num
+        result.append(ans)
+    return result
+
+
+print(getSumAbsoluteDifferences([2,3,5]))

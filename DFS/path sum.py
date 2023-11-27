@@ -54,7 +54,7 @@ def hasPathSum(root, targetSum):
 
     def dfs(node, curr_sum):
         if not node:
-            return 0
+            return False
         curr_sum += node.val
         if not node.right and not node.left:
             if curr_sum == targetSum:

@@ -28,20 +28,25 @@ Constraints:
 
 def countConsistentStrings(allowed, words) -> int:
 
-    def valid(word):
-        flag = True
-        for char in word:
-            if char not in allowed:
-                flag = False
-                break
+    # def valid(word):
+    #     flag = True
+    #     for char in word:
+    #         if char not in allowed:
+    #             flag = False
+    #             break
 
-        if flag:
-            return True
-    count = 0
-    for word in words:
-        if valid(word):
-            count += 1
-    return count
+    #     if flag:
+    #         return True
+    # count = 0
+    # for word in words:
+    #     if valid(word):
+    #         count += 1
+    # return count
+    result =0
+    for i in range(len(words)):
+        if set(words[i]) == set(allowed):
+            result +=1
+    return result 
 
 
 print(countConsistentStrings("cad",[

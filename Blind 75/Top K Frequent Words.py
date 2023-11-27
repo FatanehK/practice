@@ -39,8 +39,4 @@ def top_k_freq_elements(words, k):
     return result
 
 
-print(
-    top_k_freq_elements(
-        ["the", "day", "is", "sunny", "the", "the", "the", "sunny", "is", "is"], 4
-    )
-)
+print(top_k_freq_elements(["i", "love", "leetcode", "i", "love", "coding"], 2))

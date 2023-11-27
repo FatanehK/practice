@@ -1,4 +1,4 @@
-'''"Number of Connected Components in an Undirected Graph" can be stated as follows:
+""""Number of Connected Components in an Undirected Graph" can be stated as follows:
 
 You are given an undirected graph with n nodes, where each node is uniquely labeled from 0 to n - 1. You are also given an array edges, where edges[i] = [ai, bi] indicates that there is an edge between nodes ai and bi in the graph.
 
@@ -20,32 +20,34 @@ Constraints:
 edges[i].length == 2
 0 <= ai <= bi < n
 ai != bi
-There are no repeated edges.'''
+There are no repeated edges."""
 
 from collections import deque
 from collections import defaultdict
+
+
 def number_of_connected(n, edges):
-    visited= [0]* n
-    connect=0
+    visited = [0] * n
+    connect = 0
     graph = defaultdict(list)
     for a,b in edges:
         graph[a].append(b)
         graph[b].append(a)
-    queue= deque([])
+    queue = deque([])
     while not all(visited):
         for i in range(len(visited)):
             if not visited[i]:
                 queue.append(i)
                 break
         while queue:
-            curr= queue.popleft()
+            curr = queue.popleft()
             for neighbor in graph[curr]:
                 if not visited[neighbor]:
                     queue.append(neighbor)
-            visited[curr]=1
-        
-        connect +=1
-    return connect 
-        
+            visited[curr] = 1
 
-print(number_of_connected(5,[[0, 1], [1, 2], [3, 4]]))
+        connect += 1
+    return connect
+
+
+print(number_of_connected(5, [[0, 1], [1, 2], [3, 4]]))

@@ -46,6 +46,7 @@ Acce
 
 
 def makeFancyString(s: str) -> str:
+
     stack = []
     for i in range(len(s)):
         if len(stack) >= 2 and stack[-2] == stack[-1] and stack[-2] == s[i]:
