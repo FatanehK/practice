@@ -20,7 +20,6 @@ def isSubtree(root, subRoot):
     if valid(root,subRoot):return True
 
     return isSubtree(root.left,subRoot) or isSubtree(root.right,subRoot)
-
 root = TreeNode(3)
 root.left =TreeNode(4)
 root.left.left= TreeNode(1)

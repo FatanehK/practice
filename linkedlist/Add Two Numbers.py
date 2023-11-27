@@ -43,7 +43,6 @@ def add_two_number(l1,l2):
         val = v1+v2+carry
         carry = val //10
         val = val%10
-        # store of adding number
         curr.next= ListNode(val)
 
         # update the pointer

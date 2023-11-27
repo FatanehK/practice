@@ -18,8 +18,6 @@ Constraints:
 1 <= intervals.length <= 104
 intervals[i].length == 2
 0 <= starti <= endi <= 104"""
-
-
 def Merge_Intervals(intervals):
     intervals = sorted(intervals, key=lambda x: x[0])
     result = [intervals[0]]
@@ -27,12 +25,16 @@ def Merge_Intervals(intervals):
         curr_start, curr_end = intervals[i][0], intervals[i][1]
         prev_start, prev_end = result[-1][0],result[-1][1]
 
-        if curr_start <= prev_end:
+        if curr_start < prev_end:
             result[-1] = [prev_start, max(curr_end, prev_end)]
         else:
             result.append([curr_start, curr_end])
-    return result
-    
+    return result 
 
 
 print(Merge_Intervals([[1, 3], [2, 6], [8, 10], [15, 18]]))
+
+
+
+
+

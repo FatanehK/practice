@@ -41,7 +41,4 @@ def gcdOfStrings(str1, str2):
     return ""
 
 
-print(gcdOfStrings("ABABAB", "ABAB"))
-
-
-
+print(gcdOfStrings("ABABAB","ABAB"))
