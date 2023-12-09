@@ -1,10 +1,10 @@
-from collections import deque
+from collections import deque, defaultdict
 
 
 
 def validPath(n, edges, source, destination):
 
-    graph = [[]for _ in range(n)]
+    graph = defaultdict(list)
     for u, v in edges:
         graph[u].append(v)
         graph[v].append(u)
