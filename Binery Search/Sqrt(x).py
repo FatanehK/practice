@@ -1,4 +1,4 @@
-'''Given a non-negative integer x, return the square root of x rounded down to the nearest integer. 
+"""Given a non-negative integer x, return the square root of x rounded down to the nearest integer. 
 The returned integer should be non-negative as well.
 
 You must not use any built-in exponent function or operator.
@@ -14,20 +14,23 @@ Example 2:
 
 Input: x = 8
 Output: 2
-Explanation: The square root of 8 is 2.82842..., and since we round it down to the nearest integer, 2 is returned.'''
+Explanation: The square root of 8 is 2.82842..., and since we round it down to the nearest integer, 2 is returned."""
+
 
 def sqr(x):
-    low = 0
-    high = x
-    while low < high:
-        mid = low + (high-low)//2
-        square = mid * mid
-        if  x == square:
+    if x ==0 or x== 1: return x
+    low =0
+    high = x//2
+    while low <= high:
+        mid = (low+high)//2
+        if mid * mid == x:
             return mid
-        elif x > square:
+        elif mid*mid < x:
             low = mid+1
         else:
-            high = mid-1
+            high =mid-1
 
     return high
+
+
 print(sqr(3))
