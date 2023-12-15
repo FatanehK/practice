@@ -30,10 +30,23 @@ Constraints:
 
 
 def countBits(n):
-    dp = [0] * (n + 1)
-    for i in range(1, n + 1):
-        dp[i] = dp[i >> 1] + (i & 1)
-    return dp
+    # dp = [0] * (n + 1)
+    # for i in range(1, n + 1):
+    #     dp[i] = dp[i >> 1] + (i & 1)
+    # return dp
+    
+    # differnt approach 
+    def count(n):
+        result =0
+        while n:
+            result += n & 1
+            n = n >> 1
+        return result 
+
+    arry =[] 
+    for i in range(n+1):
+        arry.append(count(i))
+    return arry
 
 
 print(countBits(5))
