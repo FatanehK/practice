@@ -24,15 +24,29 @@ Each element in nums appears once or twice.'''
 
 class Solutions:
     def findDuplicates(self, nums):
-        result =[]
-        for n in nums:
-            n = abs(n)
-            if nums[n-1]>0:
-                nums[n-1] *= -1
-            else:
-                result.append(n)
-        return result
+        # result =[]
+        # for n in nums:
+        #     n = abs(n)
+        #     if nums[n-1]>0:
+        #         nums[n-1] *= -1
+        #     else:
+        #         result.append(n)
+        # return result
 
+        # You must solve the problem without modifying the array nums and uses only constant extra space.
+        slow =0
+        fast =0
+        while True:
+            slow = nums[slow]
+            fast = nums[nums[fast]]
+            if slow == fast:
+                break
+        fast =0
+        while fast !=slow:
+            slow = nums[slow]
+            fast =nums[fast]
+        return slow
+        
 
 sol = Solutions()
-print(sol.findDuplicates([4,3,2,7,8,2,3,1]))
+print(sol.findDuplicates([1,3,4,2,2]))
