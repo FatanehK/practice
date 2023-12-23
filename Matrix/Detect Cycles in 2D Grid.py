@@ -39,59 +39,7 @@ n == grid[i].length
 1 <= m, n <= 500
 grid consists only of lowercase English letters.
 """
-# 0 0 0 0
-# a b b b
-# a b a b
-# a b b b
 
-# Given a Matrix tell us if there is cycle in it
-
-# a b a a
-# a b a a
-# a b a a
-# a b a a
-
-
-# a -> a -> a -> a
-# |
-# a    b -> b -> b
-# |
-# a
-# m x n
-
-
-# window (0,0)
-# def cyclic_matrix(mat):
-#     window = set()
-
-#     def dfs(i, j, startingLetter, prevI, prevJ):
-#         nonlocal window
-#         if (
-#             i < 0
-#             or i >= len(mat)
-#             or j < 0
-#             or j >= len(mat[0])
-#             or mat[i][j] != startingLetter
-#         ):
-#             return False
-#         if (i, j) in window:
-#             return True
-#         window.add((i, j))
-#         return (
-#             (prevI != i + 1 and dfs(i + 1, j, startingLetter))
-#             or (prevI != i - 1 and dfs(i - 1, j, startingLetter))
-#             or dfs(i, j + 1, startingLetter)
-#             or dfs(i, j - 1, startingLetter)
-#         )
-
-#     window = set()
-#     for i in range(len(mat)):
-#         for j in range(len(mat[0])):
-#             if (i, j) in window:
-#                 continue
-#             if dfs(i, j, mat[i][j], 0, 0):
-#                 return True
-#     return False
 
 
 def containsCycle(grid) -> bool:
@@ -129,5 +77,3 @@ print(containsCycle([["a", "b", "b"], ["b", "z", "b"], ["b", "b", "b"]]))
 
 # O(m x n)
 
-# O(m x n)
-#           o( m^2 x n^2)
