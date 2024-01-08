@@ -1,9 +1,5 @@
 from collections import deque, defaultdict
-
-
-
 def validPath(n, edges, source, destination):
-
     graph = defaultdict(list)
     for u, v in edges:
         graph[u].append(v)
@@ -20,4 +16,4 @@ def validPath(n, edges, source, destination):
                 queue.append(neighbor)
                 visited.append(neighbor)
     return False
-print( validPath(6, [[0,1],[0,2],[3,5],[5,4],[4,3]],1, 5))
+print(validPath(6, [[0, 1], [0, 2], [3, 5], [5, 4], [4, 3]], 1, 5))
