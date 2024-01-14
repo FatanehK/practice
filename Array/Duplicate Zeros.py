@@ -34,8 +34,19 @@ class Solution:
                 count_zero -= 1
                 if i + count_zero < n:
                     arr[i + count_zero] = 0
-        return arr
+
+        # anothe approach
+        i =0
+        while i< len(arr):
+            if arr[i]== 0:
+                i+=1
+                arr.insert(i,0)
+                arr.pop()
+            else:
+                arr[i]= arr[i]
+            i+=1
         
+
 
 sol = Solution()
 print(sol.duplicateZeros([1, 0, 2, 3, 0, 4, 5, 0]))
