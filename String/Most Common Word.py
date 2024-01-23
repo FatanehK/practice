@@ -32,11 +32,11 @@ banned[i] consists of only lowercase English letters."""
 def mostCommonWord(paragraph, banned):
     normalize = "".join([char.lower() if char.isalnum() else " " for char in paragraph])
     normalize = normalize.split()
-    map_word ={}
+    map_word = {}
     for word in normalize:
         if word not in banned:
-            map_word[word]= map_word.get(word,0)+1
-    result = max(map_word, key = map_word.get)
+            map_word[word] = map_word.get(word, 0) + 1
+    result = max(map_word, key=map_word.get)
     return result
 
 
