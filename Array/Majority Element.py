@@ -15,16 +15,15 @@ Output: 2
 '''
 # Boyer-Moore Voting Algorithm
 def majorityElement(nums):
+    result =0
     count =0
-    candidate = 0
-
-    for num in nums:
+    for n in nums:
         if count == 0:
-            candidate = num
-        if num == candidate:
-            count +=1
+            result = n
+        if n == result:
+            count+=1
         else:
-            count -= 1
-    return candidate
+            count-=1
+    return result 
 
-print(majorityElement([3,2,3]))
+print(majorityElement([8,6,8,8,6]))
