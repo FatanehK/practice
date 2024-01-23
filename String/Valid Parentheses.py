@@ -1,4 +1,4 @@
-'''Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+"""Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
 
 An input string is valid if:
 
@@ -19,22 +19,26 @@ Example 3:
 
 Input: s = "(]"
 Output: false
-'''
+"""
 
 
 def isValid(s):
     """
-        :type s: str
-        :rtype: bool
+    :type s: str
+    :rtype: bool
     """
-    valid = {'(': ')', '{': '}', '[': ']'}
+    valid = {"(": ")", "{": "}", "[": "]"}
     stack = []
     for char in s:
         if char in valid:
             stack.append(char)
-        elif not stack or  valid[stack.pop()] != char:
-                return False
+        elif not stack or valid[stack.pop()] != char:
+            return False
     if len(stack) > 0:
         return False
     return True
+
+
 print(isValid("}"))
+
+
