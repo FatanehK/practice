@@ -25,13 +25,14 @@ import heapq
 
 
 def findKthLargest(nums, k):
-    heap_max = [-num for num in nums]
-    heapq.heapify(heap_max)
+    
+    pq =[-num for num in nums]
+    heapq.heapify(pq)
 
     while k > 1:
-        heapq.heappop(heap_max)
+        heapq.heappop(pq)
         k -= 1
-    return -heap_max[0]
+    return -pq[0]
 
 
-print(findKthLargest([3, 2, 3, 1, 2, 4, 5,5, 6], 4))
+print(findKthLargest([3, 2, 1, 5, 6, 4], 2))
