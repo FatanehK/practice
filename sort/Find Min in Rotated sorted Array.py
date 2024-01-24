@@ -1,4 +1,4 @@
-'''Suppose an array of length n sorted in ascending order is rotated between 1 and n times.
+"""Suppose an array of length n sorted in ascending order is rotated between 1 and n times.
  For example, the array nums = [0,1,2,4,5,6,7] might become:
 
 [4,5,6,7,0,1,2] if it was rotated 4 times.
@@ -26,16 +26,16 @@ Example 3:
 Input: nums = [11,13,15,17]
 Output: 11
 Explanation: The original array was [11,13,15,17] and it was rotated 4 times. 
-'''
+"""
 def find_min_rotated_sorted_array(array):
-    l=0 
-    r = len(array)-1
-    while l< r:
-        mid = (l+r)//2
+    l = 0
+    r = len(array) - 1
+    while l < r:
+        mid = (l + r) // 2
         if array[mid] > array[r]:
-            l = mid +1
+            l = mid + 1
         else:
             r = mid
     return array[l]
-print(find_min_rotated_sorted_array([3,4,5,1,2]))
 
+print(find_min_rotated_sorted_array([11, 13, 15, 17]))
