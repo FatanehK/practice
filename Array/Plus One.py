@@ -48,4 +48,4 @@ class Solution:
         return digits
 
 sol= Solution()
-print(sol.plusOne([2,9]))
+print(sol.plusOne([9,9,9]))
