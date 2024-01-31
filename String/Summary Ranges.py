@@ -1,4 +1,4 @@
-'''You are given a sorted unique integer array nums.
+"""You are given a sorted unique integer array nums.
 
 A range [a,b] is the set of all integers from a to b (inclusive).
 
@@ -26,16 +26,13 @@ Explanation: The ranges are:
 [0,0] --> "0"
 [2,4] --> "2->4"
 [6,6] --> "6"
-[8,9] --> "8->9"
-'''
-
-
+[8,9] --> "8->9" 
+"""
 def summaryRanges(nums):
     """
-        :type nums: List[int]
-        :rtype: List[str]
+    :type nums: List[int]
+    :rtype: List[str]
     """
-
     result = []
     start = nums[0]
     end =None
@@ -52,6 +49,4 @@ def summaryRanges(nums):
                 start = nums[i+1]
                 end =None
     return result
-
-
-print(summaryRanges([0,2,3,4,6,8,9]))
+print(summaryRanges([0, 1, 2, 4, 5, 7]))
