@@ -10,14 +10,11 @@ def reverseVowels(p):
     s= list(p)
     i = 0
     j = len(s)-1
-    temp = None
     
     while i <= j:
         if s[i] in vowles:
             if s[j] in vowles:
-                temp = s[i]
-                s[i] = s[j]
-                s[j] = temp
+                s[i],s[j]= s[j],s[i]
                 i += 1
                 j -= 1
             else:
@@ -27,4 +24,4 @@ def reverseVowels(p):
     return "".join(s)
 
 
-print(reverseVowels("leetcode"))
+print(reverseVowels("helo"))
