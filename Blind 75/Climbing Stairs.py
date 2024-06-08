@@ -32,7 +32,7 @@ def climbstaris(n):
 
     memo = [0, 1, 2]
     curr = 3
-    while curr < n:
+    while curr <= n:
         memo.append((memo[curr - 1] + memo[curr - 2]))
         curr += 1
     return memo[n]
