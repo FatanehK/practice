@@ -1,4 +1,5 @@
-'''Given two strings s and p, return an array of all the start indices of p's anagrams in s. You may return the answer in any order.
+"""Given two strings s and p, return an array of all the start indices of p's anagrams
+in s. You may return the answer in any order.
 
 An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
 
@@ -24,34 +25,32 @@ The substring with start index = 2 is "ab", which is an anagram of "ab".
 Constraints:
 
 1 <= s.length, p.length <= 3 * 104
-s and p consist of lowercase English letters.'''
+s and p consist of lowercase English letters."""
 
-
+from collections import Counter
 def findAnagrams(s, p):
     """
-        :type s: str
-        :type p: str
-        :rtype: List[int]
+    :type s: str
+    :type p: str
+    :rtype: List[int]
     """
-    l = 0
-    result = []
-    if len(p)> len(s):
-        return result
-    scount ={}
-    pcount={}
-    for i in range(len(p)):
-        pcount[p[i]] = pcount.get(p[i],0)+1
-        scount[s[i]]= scount.get(s[i],0)+1
-    result = [0] if pcount == scount else []
-    for r in range(len(p),len(s)):
-        scount[s[r]]= scount.get(s[r],0)+1
-        scount[s[l]]-=1
 
-        if scount[s[l]]==0:
-            scount.pop(s[l])
-        l+=1
-        if scount == pcount :
-            result.append(l)
+    len_s = len(s)
+    len_p = len(p)
+    if len(p)> len(s): return []
+    count_p = Counter(p)
+    count_window = Counter(s[:len_p])
+    result = []
+    if count_window == count_p:
+        result.append(0)
+    for i in range(len_p,len_s):
+        count_window[s[i]]+=1
+        count_window[s[i - len_p]]-=1
+
+        if count_window[s[i - len_p]] ==0:
+            del count_window[s[i - len_p]]
+        if count_window == count_p:
+            result.append(i - len_p+1)
+
     return result
-    
-print(findAnagrams("a","ab"))
+print(findAnagrams("abab", "ab"))
