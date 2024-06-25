@@ -1,4 +1,6 @@
-'''Given an array of integers nums which is sorted in ascending order, and an integer target, write a function to search target in nums. If target exists, then return its index. Otherwise, return -1.
+'''Given an array of integers nums which is sorted in ascending order, 
+and an integer target, write a function to search target in nums.
+If target exists, then return its index. Otherwise, return -1.
 
 You must write an algorithm with O(log n) runtime complexity.
 
@@ -17,11 +19,12 @@ Explanation: 2 does not exist in nums so return -1
 '''
 
 
+
 def binary_search(array,target):
     low =0
     hi = len(array)-1
 
-    while low< hi:
+    while low <= hi:
         mid = low +(hi-low)//2
         if array[mid] == target:
             return mid
@@ -30,4 +33,4 @@ def binary_search(array,target):
         else:
             hi = mid-1
     return -1
-print(binary_search([-1,0,3,5,9,12],9))
+print(binary_search([-1, 0, 3, 5, 9, 12], 2))
