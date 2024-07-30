@@ -28,22 +28,39 @@ def characterReplacement(s, k):
     :type k: int
     :rtype: int
     """
-    left =0
-    right =0
-    result =0
+    l =0 
+    max_freq =0
+    max_len= 0
     map ={}
-    for right in range(len(s)):
-        if s[right] not in map:
-            map[s[right]] =1
-        else:
-            map[s[right]]+=1
-        while (right-left +1) - max(map.values()) > k :
-            map[s[left]]-=1
-            left += 1
-            
-        result = max(result, right-left +1)
 
-    return result
+    for r in range(len(s)):
+        map[s[r]] = map.get(s[r],0)+1
+        max_freq = max(max_freq,map[s[r]])
+
+        while max_freq+ k < r-l +1:
+            map[s[l]]-=1
+            if map[s[l]]== 0:
+                del map[s[l]]
+            l+=1
+        max_len = max(max_len,r-l+1)
+    return max_len
+
+    # left = 0
+    # right = 0
+    # result = 0
+    # map ={}
+    # for right in range(len(s)):
+    #     if s[right] not in map:
+    #         map[s[right]] =1
+    #     else:
+    #         map[s[right]]+=1
+    #     while (right-left +1) - max(map.values()) > k :
+    #         map[s[left]]-=1
+    #         left += 1
+
+    #     result = max(result, right-left +1)
+
+    # return result
 
 
 print(characterReplacement("ABAB", 2))
