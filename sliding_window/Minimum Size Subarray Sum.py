@@ -25,22 +25,7 @@ def Minimum_Size_Subarray_Sum(nums,target):
             min_len = min(min_len,right-left +1)
             current_sum -= nums[left]
             left+=1
-    return min_len
+    return min_len if min_len != float('inf') else 0
 
 print(Minimum_Size_Subarray_Sum([2,3,1,2,4,3],7))
 
-def minSubArrayLen(target,nums) -> int:
-    curr_sum = 0
-    R = 0
-    min_len = float('inf')
-    for L in range(len(nums)):
-        curr_sum += nums[L]
-        while curr_sum >= target:
-            if curr_sum == target:
-                min_len = min(L-R+1, min_len)
-            curr_sum -= nums[R]
-            R += 1
-
-    return min_len if min_len != float('inf') else 0
-
-print(minSubArrayLen(11,[1,2,3,4,5]))
