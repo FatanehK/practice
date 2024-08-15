@@ -13,8 +13,7 @@ def isValidBST(root):
 
     # recurse from top down, but need to update boundraries!
     def valid(node, left, right):
-        if not node:
-            return True
+        if not node: return True
 
         if node.val <= left or node.val >= right:
             return False
