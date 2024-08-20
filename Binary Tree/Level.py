@@ -1,5 +1,6 @@
 """
-We are interested in writing a function that returns which level in a binary tree has the most nodes. The root of the tree is considered level 0. 
+We are interested in writing a function that returns which level in 
+a binary tree has the most nodes. The root of the tree is considered level 0. 
 
 Our function should accept one argument, the root of the binary tree and return an integer representing the level of the tree with the most nodes. 
 
@@ -29,7 +30,7 @@ class Node:
         self.right = right
 
 
-def level(root):
+def max_level_Binary_tree(root):
     q = deque([root])
     max_level = 0
     max_len_q = 0
@@ -38,9 +39,9 @@ def level(root):
     while q:
         len_q = len(q)
         if len_q > max_len_q:
-            max_len_q = len_q
+            max_len_q = max(max_len_q, len_q)
             max_level = level
-        for i in range(len_q):
+        for _ in range(len_q):
             curr = q.popleft()
 
             if curr.left:
@@ -61,4 +62,4 @@ root.right.right = Node(7)
 root.left.left.left = Node(8)
 root.left.left.right = Node(9)
 root.left.right.left = Node(10)
-assert level(root) == 2
+assert max_level_Binary_tree(root) == 2
