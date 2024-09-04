@@ -1,38 +1,57 @@
-class Node:
-    def __init__(self,key,val):
-        self.key =key
-        self.val =val
+"""
+Clarifying questions:
+1. what is the maximum size of the cache? should the cache size be fixed or dynamic?
+2. what is the key and value data Type?should I assume integer for simplicity?
+3. should the cache support get and put? Do I need to get it O(1) time complexity?
+4. what is the evication policy? should the cache evict the least recently used item when full?
+
+Approach
+Data Structures:
+
+Doubly Linked List: to keep track of the order of items. 
+The most recently used (MRU) items will be close to the right dummy node (tail), 
+and the least recently used (LRU) items will be close to the left dummy node (head).
+
+HashMap (Dictionary): map keys to their corresponding nodes in the doubly linked list.
+This allows for O(1) access to nodes for both retrieval and update operations."""
+
+
+class Node:  # Holds the key, value, and pointers (prev and next) for the doubly linked list.
+    def __init__(self, key, val):
+        self.key = key
+        self.val = val
         self.prev = None
         self.next = None
 
 
 class LRUCache:
-    def __init__(self,capacity):
-        self.cap= capacity
-        self.cache ={} # map key to node
+    def __init__(self, capacity):
+        self.cap = capacity
+        self.cache = {}  # map key to node and quick look up
 
         # left = LRU right= MRU
-        self.left = Node(0,0)
-        self.right = Node(0,0)
+        self.left = Node(0, 0)  # dummy head
+        self.right = Node(0, 0)  # dmmy tail
         self.left.next = self.right
         self.right.prev = self.left
 
         # pointer function
-    def remove(self,node):
+
+    def remove(self, node):
         prev = node.prev
         nxt_node = node.next
         prev.next = nxt_node
         nxt_node.prev = prev
 
-    def insert(self,node):
-        prev= self.right.prev
+    def insert(self, node):  # Inserts a node right before the dummy tail node
+        prev = self.right.prev
         nxt_node = self.right
 
         prev.next = nxt_node.prev = node
-        node.next =nxt_node
-        node.prev= prev
+        node.next = nxt_node
+        node.prev = prev
 
-    def get(self,key):
+    def get(self, key):
         if key in self.cache:
             self.remove(self.cache[key])
             self.insert(self.cache[key])
@@ -40,18 +59,17 @@ class LRUCache:
             return self.cache[key].val
         return -1
 
-    def put(self,key,value):
+    def put(self, key, value):
         if key in self.cache:
             self.remove(self.cache[key])
-        self.cache[key]= Node(key,value)
+        self.cache[key] = Node(key, value)
         self.insert(self.cache[key])
 
-        if len(self.cache)> self.cap:
+        if len(self.cache) > self.cap:
             # remove the LRU
             lru = self.left.next
             self.remove(lru)
             del self.cache[lru.key]
-
 
 
 def test_lru_cache():
@@ -91,4 +109,6 @@ def test_lru_cache():
     assert cache.get(1) == -1  # Cache should be empty
 
     print("All tests passed.")
+
+
 print(test_lru_cache())
