@@ -1,73 +1,75 @@
-class Node:
-    def __init__(self,val,next=None):
+"""ou are given the heads of two sorted linked lists list1 and list2.
+
+Merge the two lists into one sorted list. The list should be made by splicing together the nodes of the first two lists.
+
+Return the head of the merged linked list.
+
+Example 1:
+
+
+Input: list1 = [1,2,4], list2 = [1,3,4]
+Output: [1,1,2,3,4,4]
+Example 2:
+
+Input: list1 = [], list2 = []
+Output: []
+
+Example 3:
+
+Input: list1 = [], list2 = [0]
+Output: [0]
+
+"""
+
+
+class ListNode:
+    def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
 
 
-class Solution:
+def Merge_two_sorted_list(list1, list2):
+    if not list1 and not list2:
+        return None
+    dummy = ListNode()
+    curr = dummy
 
-    def mergeKLists(self, lists) :
-        if not lists or len(lists) == 0:
-            return None
+    while list1 and list2:
+        if list1.val < list2.val:
+            curr.next = list1
+            list1 = list1.next
+        else:
+            curr.next = list2
+            list2 = list2.next
+        curr = curr.next
 
-        while len(lists) > 1:
-            mergedLists = []
-            for i in range(0, len(lists), 2):
-                l1 = lists[i]
-                l2 = lists[i + 1] if (i + 1) < len(lists) else None
-                mergedLists.append(self.mergeList(l1, l2))
-            lists = mergedLists
-        return lists[0]
-
-    def mergeList(self, l1, l2):
-        dummy = Node(None)
-        tail = dummy
-
-        while l1 and l2:
-            if l1.val < l2.val:
-                tail.next = l1
-                l1 = l1.next
-            else:
-                tail.next = l2
-                l2 = l2.next
-            tail = tail.next
-        if l1:
-            tail.next = l1
-        if l2:
-            tail.next = l2
-        return dummy.next
+    # If one of the lists is not empty, append the remaining part to the merged list
+    if list1:
+        curr.next = list1
+    else:
+        curr.next = list2
+    return dummy.next
 
 
-node_one = Node(1)
-node_two = Node(2)
-node_d = Node(3)
-node_e = Node(5)
-node_f = Node(9)
-node_h= Node(10)
-list1 =  node_one
-node_one.next = node_two
-node_two.next = node_d
-node_d.next = node_e
-node_e.next = node_f
-node_f.next = node_h
+ll1 = ListNode(1)
+ll1.next = ListNode(2)
+ll1.next.next = ListNode(5)
 
 
-node_a = Node(3)
-node_b = Node(4)
-node_c= Node(5)
-node_four = Node(6)
-node_a.next = node_b
-node_b.next = node_c
-node_c.next = node_four
-list2 = node_a
+ll2 = ListNode(3)
+ll2.next = ListNode(4)
 
-node_a = Node(1)
-node_b = Node(8)
-node_c = Node(10)
-node_four = Node(16)
-node_a.next = node_b
-node_b.next = node_c
-node_c.next = node_four
-list3 = node_a
-sol= Solution()
-print(sol.mergeKLists([list1,list2,list3]))
+
+def print_linked_list(head: ListNode):
+    values = []
+    while head:
+        values.append(head.val)
+        head = head.next
+    print(values)
+
+
+# Merge the lists
+merged_head = Merge_two_sorted_list(ll1, ll2)
+
+# Print the merged list
+print_linked_list(merged_head)
