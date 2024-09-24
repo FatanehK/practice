@@ -28,20 +28,16 @@ intervals[i].length == 2
 
 class Solution:
     def eraseOverlapIntervals(self, intervals):
-        intervals.sort(key=lambda x: x[0])
-        count = 0
-        prev_end = intervals[0][1]
+        intervals.sort(key=lambda x: x[1])
+        N = len(intervals)
+
+        end = intervals[0][1]
+        count = 1
         for i in range(1, len(intervals)):
-            start = intervals[i][0]
-            end = intervals[i][1]
-            if start >= prev_end:
-                prev_end = end
-
-            else:
+            if intervals[i][0] >= end:
+                end = intervals[i][1]
                 count += 1
-                prev_end = min(end, prev_end)
-
-        return count
+        return N - count
 
 
 sol = Solution()
