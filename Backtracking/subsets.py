@@ -1,4 +1,4 @@
-'''Given an integer array nums of unique elements, return all possible 
+"""Given an integer array nums of unique elements, return all possible 
 subsets
  (the power set).
 
@@ -20,26 +20,42 @@ Constraints:
 
 1 <= nums.length <= 10
 -10 <= nums[i] <= 10
-All the numbers of nums are unique.'''
+All the numbers of nums are unique."""
+
+# def subset(nums):
+#     result =[]
+#     subset=[]
+
+#     def dfs(i):
+#         if i>=len(nums):
+#             result.append(subset[:])
+#             return
+#         # descion to include nums[i]
+#         subset.append(nums[i])
+#         dfs(i+1)
+
+
+#         #desion to Not include nums[i]
+#         subset.pop()
+#         dfs(i+1)
+
+#     dfs(0)
+#     return result
+
+# print(subset([1,2,3]))
+
 
 def subset(nums):
-    result =[]
-    subset=[]
+    result = []
 
-    def dfs(i):
-        if i>=len(nums):
-            result.append(subset[:])
-            return 
-        # descion to include nums[i]
-        subset.append(nums[i])
-        dfs(i+1)
+    def backtrack(start, path, result):
+        result.append(path[:])
+        for i in range(start, len(nums)):
+            path.append(nums[i])
+            backtrack(i + 1, path, result)
+            path.pop()
 
-
-        #desion to Not include nums[i]
-        subset.pop()
-        dfs(i+1)
-
-    dfs(0)
+    backtrack(0, [], result)
     return result
 
-print(subset([1,2,3]))
+print(subset([1, 2, 3]))
