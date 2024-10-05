@@ -19,24 +19,21 @@ nums[i] is either 0 or 1."""
 
 
 def contigous_array(nums):
-    zero = 0
-    one = 0
-    map = {}  # count[1]-count[0]---> indx
-    result = 0
-    for i, num in enumerate(nums):
-        if num == 0:
-            zero += 1
+    mx_length = 0
+    cumulative_sum = 0
+    sum_map = {0: -1}
+    for i in range(len(nums)):
+        if nums[i] == 1:
+            cumulative_sum += 1
         else:
-            one += 1
+            cumulative_sum -= 1
 
-        if one - zero not in map:
-            map[one - zero] = i
-        if one == zero:
-            result = one + zero
+        if cumulative_sum in sum_map:
+            subarr_len = i - sum_map[cumulative_sum]
+            mx_length = max(subarr_len, mx_length)
         else:
-            indx = map[one - zero]
-            result = max(result, i - indx)
-    return result
+            sum_map[cumulative_sum] = i
+    return mx_length
 
 
 print(contigous_array([0, 1, 0, 0, 1, 1, 1]))
